@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:windsky/details.dart';
 import 'package:windsky/Version%202/detailsv2.dart';
-import 'package:windsky/weather_data.dart';
 import 'package:windsky/Version%202/weather_datav2.dart';
-import 'package:windsky/weather_search.dart';
 import 'package:windsky/Version%202/weather_searchv2.dart';
 
 // void main() {
@@ -67,7 +64,7 @@ class MyApp extends StatelessWidget {
         //useMaterial3: true,
 
       ),
-      home: WeatherSearchV2(),
+      home: DetailsV2(),
     );
   }
 }

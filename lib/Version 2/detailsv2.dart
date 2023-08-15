@@ -11,8 +11,6 @@ class DetailsV2 extends StatefulWidget {
 
 class _DetailsV2State extends State<DetailsV2> {
 
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -32,156 +30,102 @@ class _DetailsV2State extends State<DetailsV2> {
   Widget build(BuildContext context) {
 
     final result = context.watch<WeatherDataV2>();
-
+    final List<Color> lightblue = [Color(0xFF4BE2E3), Color(0xFF28E2CE),Color(0xFF26ADA0)];
+    final List<Color> orange = [Color(0xFFFAE177), Color(0xFFFEC68D),Color(0xFFFFBE94)];
     //print(result.name);
-    return Scaffold(
-      backgroundColor: Colors.blue[200],
-      body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 70, 16, 16),
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: orange)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SafeArea(
             child: RefreshIndicator(
               onRefresh: () async {
-
                   getData();
                setState(() {
-
                });
-
               },
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      '${result.name},${result.country}',
-                      style: TextStyle(
-                          fontFamily: 'Rubik',
-                          fontSize: 25,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
-                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          result.temparature.toInt().toString(),
+                          '${result.name},${result.country}',
                           style: TextStyle(
                               fontFamily: 'Rubik',
-                              fontSize: 200,
+                              fontSize: 25,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
                         ),
-                        Text(
-                          '°',
-                          style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontSize: 100,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white),
-                        ),
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.topRight,
-                            //color: Colors.red,
-                            child: RotatedBox(
-                              quarterTurns: 3,
-                              child: Text(
-                                result.weather.toUpperCase(),
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
+                        IconButton(onPressed: (){}, icon: Icon(Icons.calendar_month))
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Center(
-                      child: Container(
-                        width: 350,
-                        height: 350,
+                    // SizedBox(
+                    //   height: 20,
+                    // ),
+                    Container(
+                      width: 350,
+                      height: 350,
+                      //color: Colors.amberAccent,
+                      decoration: BoxDecoration(
                         //color: Colors.amberAccent,
-                        decoration: BoxDecoration(
-
-                            image: DecorationImage(
-                              image: Image.asset('images/' + context.read<WeatherDataV2>().icon + '.png').image,
-                              fit: BoxFit.contain,
-
-                            )
-                        ),
+                          image: DecorationImage(
+                            image: Image.asset('images/' + "01d" + '.png').image,
+                            fit: BoxFit.fitWidth,
+                          )
                       ),
                     ),
-                    Container(
-                      height: 80,
-                      //width: 400,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 3, color: Colors.white24),
-                          color: Colors.white12,
-                          borderRadius: BorderRadius.circular(20)),
+                    Text(
+                      "It's hot",
+                      style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 26,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
 
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${result.humidity}%',
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                              Text(
-                                'Humidity',
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${result.visibility}KM',
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                              Text(
-                                'Visibility',
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
-                          InkWell(
-                              onTap:(){
+                    Text(
+                      "30",
+                      style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 125,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(CupertinoIcons.wind) ,
+                        SizedBox(width: 10,),
+                        Text('2 km/h'),
+                        SizedBox(width: 20,),
+                        Icon(CupertinoIcons.wind),
+                        SizedBox(width: 10,),
+                        Text('32 %'),
 
-                              } ,
-                              child: Image.asset('images/' + context.read<WeatherDataV2>().icon + '.png',fit: BoxFit.contain,height: 100,width: 100,)),
-                        ],
-                      ),
+                      ],
                     )
+
                   ],
                 ),
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

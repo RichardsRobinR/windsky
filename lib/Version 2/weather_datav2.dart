@@ -10,8 +10,9 @@ class WeatherDataV2 with ChangeNotifier {
   String visibility = '0 KM';
   String weather = 'Nice Weather';
   String icon = "0";
+  String pressure = "0";
 
-  String cityname ;
+  String cityname = "Mysuru";
 
   int statuscode = 0;
 
@@ -36,6 +37,8 @@ class WeatherDataV2 with ChangeNotifier {
       visibility = (data['visibility'] / 1000).toString();
       weather = data['weather'][0]['description'];
       icon = data['weather'][0]['icon'];
+      pressure = data['main']['pressure'].toString();
+      print(pressure);
 
     }
 

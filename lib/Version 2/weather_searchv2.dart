@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:windsky/Version%202/detailsv2.dart';
-import 'package:windsky/weather_data.dart';
 import 'package:provider/provider.dart';
 import 'package:windsky/Version%202/weather_datav2.dart';
 
 class WeatherSearchV2 extends StatefulWidget {
-  const WeatherSearchV2({Key key}) : super(key: key);
+  const WeatherSearchV2({Key? key}) : super(key: key);
 
   @override
   _WeatherSearchV2State createState() => _WeatherSearchV2State();
@@ -13,8 +12,11 @@ class WeatherSearchV2 extends StatefulWidget {
 
 class _WeatherSearchV2State extends State<WeatherSearchV2> {
   final _textcontroller = TextEditingController();
-  String value;
+  late String value;
 
+  static const snackBar = SnackBar(
+    content: Text('Invalid City'),
+  );
 
   @override
   void initState() {
@@ -81,15 +83,8 @@ class _WeatherSearchV2State extends State<WeatherSearchV2> {
                          }));
                        }
                        else {
-                         print("the end");
+                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                        }
-
-
-
-
-
-
-
                       },
                       child: Text(
                         "Search",
