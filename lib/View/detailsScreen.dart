@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:windsky/Version%202/weather_datav2.dart';
 
+import 'dailyWeatherList.dart';
+
 class DetailsV2 extends StatefulWidget {
 
   @override
@@ -32,13 +34,14 @@ class _DetailsV2State extends State<DetailsV2> {
     final result = context.watch<WeatherDataV2>();
     final List<Color> lightblue = [Color(0xFF4BE2E3), Color(0xFF28E2CE),Color(0xFF26ADA0)];
     final List<Color> orange = [Color(0xFFFAE177), Color(0xFFFEC68D),Color(0xFFFFBE94)];
+    final List<Color> orange1 = [Color(0xFFFAE177), Color(0xFFFEC68D),Color(0xFFF39F86)];
     //print(result.name);
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: orange)),
+              colors: orange1)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -117,7 +120,8 @@ class _DetailsV2State extends State<DetailsV2> {
                         Text('32 %'),
 
                       ],
-                    )
+                    ),
+                    DailyWeatherList(),
 
                   ],
                 ),

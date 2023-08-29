@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:windsky/Version%202/detailsv2.dart';
+import 'package:windsky/View/detailsScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:windsky/Version%202/weather_datav2.dart';
 
